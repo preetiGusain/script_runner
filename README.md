@@ -26,12 +26,14 @@ npm install
 4. Create a `.env` file in the root directory of the project and configure the following variables:
 
 ```env
-backend_uri=<YOUR_API_URL>
-CRON_STRING=<CRON_SCHEDULE>
+CRON_JOBS=[{"url":"<YOUR_API_URL>","cron":"<CRON_SCHEDULE>"}]
 ```
 
-- `backend_uri`: The API URL to which the script will make a GET request.
-- `CRON_STRING`: The cron job schedule (e.g., `*/5 * * * *` to run every 5 minutes).
+CRON_JOBS: A JSON array containing objects with two keys:
+
+- url: The API endpoint to which the script will make a GET request.
+
+- cron: The cron schedule string (e.g., `*/5 * * * *` to run every 5 minutes).
 
 ## Usage
 After setting up the `.env` file, you can run the script:
@@ -46,15 +48,19 @@ This will start the cron job immediately and it will continue making API calls a
 
 ### .env
 ```env
-backend_uri=https://api.example.com/data
-CRON_STRING=*/5 * * * *  # This runs the job every 5 minutes
+CRON_JOBS=[{"url":"https://api.example.com/data","cron":"*/5 * * * *"}]
 ```
 
 ### Console output:
 ```pgsql
-API URL from .env: https://api.example.com/data
-Cron job is running. It will call the API every 5 minutes.
-Making an API call at: 2025-02-24T12:00:00.000Z
+jobs fetched  [
+  {
+    url: 'https://api.example.com/data',
+    cron: '*/5 * * * *'
+  }
+]
+Cron jobs started!
+Calling : https://api.example.com/data at :  2025-04-19T07:52:20.004Z
 API call successful: { "data": "Sample response data" }
 ```
 
