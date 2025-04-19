@@ -2,7 +2,7 @@
 
 This script runs a cron job to make periodic API calls. The API URL and the cron job schedule are configured via environment variables.
 
-![Script Runner](logo.png)
+<img src="logo.png" width="300"/>
 
 ## Prerequisites
 - Node.js (version 12.x or above)
